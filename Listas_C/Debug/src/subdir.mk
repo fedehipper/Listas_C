@@ -7,6 +7,10 @@ C_SRCS += \
 ../src/listas.c \
 ../src/main.c 
 
+O_SRCS += \
+../src/listas.o \
+../src/main.o 
+
 OBJS += \
 ./src/listas.o \
 ./src/main.o 
