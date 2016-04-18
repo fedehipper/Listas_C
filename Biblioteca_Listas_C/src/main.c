@@ -24,10 +24,9 @@ struct t_contenido * devolve_contenido(struct nodo * un_nodo) {
 /* muestra el contenido, depende cual sea puede cambiar */
 void mostrar(struct nodo ** una_lista) {
 	struct nodo * aux;
-	aux = malloc(sizeof(struct nodo));
 	aux = *una_lista;
 	while(aux != NULL) {
-		struct t_contenido * con = malloc(sizeof(struct t_contenido));
+		struct t_contenido * con;
 		con = aux->contenido;
 		printf("%d -----  %s\n", con->un_valor, con->un_string);
 		aux = aux->sig;
@@ -42,7 +41,7 @@ int main(void) {
 	struct nodo * dos = crear_nodo(llenar(2, "como"));
 	struct nodo * tres = crear_nodo(llenar(2, "estas?"));
 
-	struct nodo * una_lista = malloc(sizeof(struct nodo)); // esta vacia
+	struct nodo * una_lista;
 	una_lista = NULL;
 
 	/*encolar(&uno, &una_lista);
