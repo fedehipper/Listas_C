@@ -23,7 +23,8 @@ struct t_contenido * devolve_contenido(struct nodo * un_nodo) {
 
 /* muestra el contenido, depende cual sea puede cambiar */
 void mostrar(struct nodo ** una_lista) {
-	struct nodo * aux = malloc(sizeof(struct nodo));
+	struct nodo * aux;
+	aux = malloc(sizeof(struct nodo));
 	aux = *una_lista;
 	while(aux != NULL) {
 		struct t_contenido * con = malloc(sizeof(struct t_contenido));
