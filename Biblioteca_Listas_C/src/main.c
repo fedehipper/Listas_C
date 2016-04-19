@@ -16,7 +16,7 @@ struct t_contenido * llenar(int valor, char * palabra) {
 	return cont;
 }
 
-struct t_contenido * devolve_contenido(struct nodo * un_nodo) {
+struct t_contenido * contenido(struct nodo * un_nodo) {
 	return un_nodo->contenido;
 }
 
@@ -44,61 +44,24 @@ int main(void) {
 	struct nodo * una_lista;
 	una_lista = NULL;
 
-	/*encolar(&uno, &una_lista);
-	encolar(&dos, &una_lista);
-	encolar(&tres, &una_lista);
-
-	printf("se muestran las listas: \n");
-
-	eliminar(&una_lista, 3);
-	eliminar(&una_lista, -1);
-	mostrar(&una_lista);
-
-	printf("lista con eliminaciones\n");
-
-	eliminar(&una_lista, 2);
-
-
-	mostrar(&una_lista);
-
-
-	struct nodo * aux = busca_contenido_por_indice(&una_lista, 1);
-
-	if(aux != NULL)
-		printf("busqueda por indice: %d y %s\n", aux->contenido->un_valor, aux->contenido->un_string);
-
-	int tamanio = list_size(&una_lista);
-
-	printf("\ntamanio de la lista: %d\n", tamanio);
-
-
-
-	printf("lista con agregar: ");
-
-	eliminar(&una_lista, 0);
-	eliminar(&una_lista, 1);
-	eliminar(&una_lista, 2);
-
-*/
-
 	encolar(&uno, &una_lista);
 	encolar(&dos, &una_lista);
 	encolar(&tres, &una_lista);
 
-	printf("tamanio: %d\n", list_size(&una_lista));
+	printf("tamanio: %d\n", size(&una_lista));
 
 	mostrar(&una_lista);
 
 	int i = 0;
 	struct nodo * un_nodo = busca_contenido_por_indice(&una_lista, i);
 
-	if(i <= list_size(&una_lista) && i >= 0)
-		printf("buscar por indice: %d con---> %s", devolve_contenido(un_nodo)->un_valor, devolve_contenido(un_nodo)->un_string);
+	if(i <= size(&una_lista) && i >= 0)
+		printf("buscar por indice: %d con---> %s", contenido(un_nodo)->un_valor, contenido(un_nodo)->un_string);
 
 	printf("\nlista desencolar \n\n");
 
-	printf("desencole el numero: %d\n", devolve_contenido(des_encolar(&una_lista))->un_valor);
-	printf("desencole el numero: %d\n", devolve_contenido(des_encolar(&una_lista))->un_valor);
+	printf("desencole el numero: %d\n", contenido(sacar(&una_lista))->un_valor);
+	printf("desencole el numero: %d\n", contenido(sacar(&una_lista))->un_valor);
 
 	mostrar(&una_lista);
 

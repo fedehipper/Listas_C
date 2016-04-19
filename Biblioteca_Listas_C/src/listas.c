@@ -3,7 +3,6 @@
 #include "estructuras.h"
 
 
-
 /* crea el nodo de la estructura enlazada */
 struct nodo * crear_nodo(void * estructura) {
 	struct nodo * un_nodo = malloc(sizeof(struct nodo));
@@ -13,11 +12,11 @@ struct nodo * crear_nodo(void * estructura) {
 }
 
 /* mete un nodo o elemento al final de la lista como cola */
-void encolar(struct nodo ** un_nodo, struct nodo ** una_lista) {
-	struct nodo * aux = *una_lista;
-	if(*una_lista == NULL) {
-		*una_lista = *un_nodo;
-		(*una_lista)->sig = NULL;
+void encolar(struct nodo ** un_nodo, struct nodo ** lista) {
+	struct nodo * aux = *lista;
+	if(*lista == NULL) {
+		*lista = *un_nodo;
+		(*lista)->sig = NULL;
 	}
 	else {
 		while(aux->sig != NULL)
@@ -27,18 +26,17 @@ void encolar(struct nodo ** un_nodo, struct nodo ** una_lista) {
 }
 
 /* mete un nodo o elemento al principio de la lista como pila */
-void apilar(struct nodo ** un_nodo, struct nodo ** una_lista) {
-	if(*una_lista != NULL) {
-		struct nodo * aux = *una_lista;
+void apilar(struct nodo ** un_nodo, struct nodo ** lista) {
+	if(*lista != NULL) {
+		struct nodo * aux = *lista;
 		(*un_nodo)->sig = aux;
 	}
-	*una_lista = *un_nodo;
+	*lista = *un_nodo;
 }
 
-/* elimina el nodo de acuerdo a un indice comenzando de 0 y si se paso de rango,
-   mas de lo que tiene la lista o pide un indice menor deja la lista como esta */
-int eliminar(struct nodo ** una_lista, int indice) {
-	struct nodo * post = *una_lista, *ant = post;
+/* elimina el nodo de acuerdo al indice comenzando de 0 y si se paso de rango, no elimina */
+int eliminar(struct nodo ** lista, int indice) {
+	struct nodo * post = *lista, *ant = post;
 	int count = 0;
 	while(post != NULL && indice > count) {
 		ant = post;
@@ -47,7 +45,7 @@ int eliminar(struct nodo ** una_lista, int indice) {
 	}
 	if(indice >= 0 && post != NULL) {
 		if(count == 0)
-			*una_lista = ant->sig;
+			*lista = ant->sig;
 		if(count == indice && count != 0 && post->sig == NULL)
 			ant->sig = NULL;
 		else
@@ -59,8 +57,8 @@ int eliminar(struct nodo ** una_lista, int indice) {
 }
 
 /* retorna la cantidad de nodos o elementos de la lista */
-int list_size(struct nodo ** una_lista) {
-	struct nodo * aux = *una_lista;
+int size(struct nodo ** lista) {
+	struct nodo * aux = *lista;
 	int cont = 0;
 	while(aux != NULL) {
 		aux = aux->sig;
@@ -70,29 +68,28 @@ int list_size(struct nodo ** una_lista) {
 }
 
 /* retorna el nodo de acuerdo con un indice que recibe por parametro */
-struct nodo * busca_contenido_por_indice(struct nodo ** una_lista, int indice) {
-	struct nodo * aux = *una_lista;
+struct nodo * busca_contenido_por_indice(struct nodo ** lista, int indice) {
+	struct nodo * aux = *lista;
 	int i;
-	for(i = 0; i < list_size(una_lista) ; i++) {
+	for(i = 0; i < size(lista) ; i++) {
 		if(i == indice)
 			break;
 		aux = aux->sig;
 	}
-	if(indice >= 0 && indice <= list_size(una_lista))
+	if(indice >= 0 && indice <= size(lista))
 		return aux;
 	else
 		return NULL;
 }
 
-/* elimina el ultimo primer elemento, y lo retorna */
-struct nodo * des_encolar(struct nodo ** una_lista) {
-	if(*una_lista != NULL) {
-		struct nodo * aux = *una_lista;
-		*una_lista = (*una_lista)->sig;
+/* elimina el primer elemento (des_encolar y des_apilar), y lo retorna */
+struct nodo * sacar(struct nodo ** lista) {
+	if(*lista != NULL) {
+		struct nodo * aux = *lista;
+		*lista = (*lista)->sig;
 		aux->sig = NULL;
 		return aux;
 	}
 	else
 		return NULL;
 }
-
