@@ -1,13 +1,13 @@
-SOURCES =   listas.c main.c
-HEADERS =   listas.h estructuras.h
+SOURCES = listas.c main.c
+HEADERS = listas.h estructuras.h
 
 main : main.o listas.o
 	gcc -o main main.o listas.o
 
-main.o : main.c listas.h estructuras.h
+main.o : main.c $(HEADERS)
 	gcc -c main.c
 
-listas.o : listas.c listas.h estructuras.h
+listas.o : listas.c $(HEADERS)
 	gcc -c listas.c 
 
 clean:
