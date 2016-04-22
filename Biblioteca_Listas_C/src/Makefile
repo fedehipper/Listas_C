@@ -1,3 +1,6 @@
+SOURCES =   listas.c main.c
+HEADERS =   listas.h estructuras.h
+
 main : main.o listas.o
 	gcc -o main main.o listas.o
 
@@ -9,5 +12,8 @@ listas.o : listas.c listas.h estructuras.h
 
 clean:
 	rm -f main \
-		main.o listas.o
+		main.o listas.o 
+
+send:		
+		tar zcvf listas.tar $(SOURCES) $(HEADERS) Makefile
 		
