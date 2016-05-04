@@ -8,12 +8,13 @@ main.o : main.c $(HEADERS)
 	gcc -c main.c
 
 listas.o : listas.c $(HEADERS)
-	gcc -c listas.c 
+	gcc -c listas.c
 
 clean:
 	rm -f main \
-		main.o listas.o 
+		main.o listas.o
 
-send:		
+send:
 		tar zcvf listas.tar $(SOURCES) $(HEADERS) Makefile
-		
+
+
