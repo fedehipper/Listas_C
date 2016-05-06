@@ -44,12 +44,8 @@ int eliminar(struct nodo ** lista, int indice) {
 		count++;
 	}
 	if(indice >= 0 && post != NULL) {
-		if(count == 0)
-			*lista = ant->sig;
-		if(count == indice && count != 0 && post->sig == NULL)
-			ant->sig = NULL;
-		else
-			ant->sig = post->sig;
+		*lista = count == 0 ? ant->sig : NULL;
+		ant->sig = count == indice && count != 0 && post->sig == NULL ? NULL : post->sig;
 		return 1;
 	}
 	else
@@ -72,14 +68,10 @@ struct nodo * busca_contenido_por_indice(struct nodo ** lista, int indice) {
 	struct nodo * aux = *lista;
 	int i;
 	for(i = 0; i < size(lista) ; i++) {
-		if(i == indice)
-			break;
+		if(i == indice) break;
 		aux = aux->sig;
 	}
-	if(indice >= 0 && indice <= size(lista))
-		return aux;
-	else
-		return NULL;
+	return (indice >= 0 && indice <= size(lista)) ? aux : NULL;
 }
 
 /* elimina el primer elemento (des_encolar y des_apilar), y lo retorna */
