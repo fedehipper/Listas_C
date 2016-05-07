@@ -2,9 +2,9 @@
 #define ESTRUCTURAS_H_
 
 
-/* estructura del nodo de la lista, es generico */
+/* t_contenido depende el programa */
 struct nodo {
-	void * contenido;
+	struct t_contenido * contenido;
 	struct nodo * sig;
 };
 
