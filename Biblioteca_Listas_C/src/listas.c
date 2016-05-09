@@ -68,7 +68,7 @@ int size(nodo ** lista) {
 
 
 /* retorna el nodo de acuerdo con un indice que recibe por parametro */
-nodo * busca_contenido_por_indice(nodo ** lista, int indice) {
+nodo * busca_por_indice(nodo ** lista, int indice) {
 	nodo * aux = *lista;
 	int i;
 	for(i = 0; i < size(lista) ; i++) {
@@ -81,7 +81,6 @@ nodo * busca_contenido_por_indice(nodo ** lista, int indice) {
 
 /* elimina el primer elemento (des_encolar y des_apilar), y lo retorna */
 nodo * sacar(nodo ** lista) {
-
 	if(*lista != NULL) {
 		nodo * aux = *lista;
 		*lista = (*lista)->sig;
@@ -91,3 +90,21 @@ nodo * sacar(nodo ** lista) {
 	else
 		return NULL;
 }
+
+/* inserta un elemento de acuerdo a una posicion o indice */
+void insertar_por_indice(nodo ** lista, nodo ** elemento, int indice) {
+	if(indice == 0)
+		apilar(elemento, lista);
+	if(indice == size(lista) + 1)
+		encolar(elemento, lista);
+	nodo * anterior = busca_por_indice(lista, indice - 1);
+	nodo * siguiente = anterior->sig;
+	anterior->sig = *elemento;
+	(*elemento)->sig = siguiente;
+}
+
+
+
+
+
+

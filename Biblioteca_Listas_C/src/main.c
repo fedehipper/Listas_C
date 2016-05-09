@@ -16,7 +16,7 @@ int main(void) {
 
 	nodo * uno = crear_nodo(llenar(1, "hola"));
 	nodo * dos = crear_nodo(llenar(2, "como"));
-	nodo * tres = crear_nodo(llenar(2, "estas?"));
+	nodo * tres = crear_nodo(llenar(3, "estas?"));
 
     nodo * una_lista;
 	una_lista = NULL;
@@ -30,7 +30,7 @@ int main(void) {
 	mostrar(&una_lista);
 
 	int i = 0;
-	nodo * un_nodo = busca_contenido_por_indice(&una_lista, i);
+	nodo * un_nodo = busca_por_indice(&una_lista, i);
 
 	if(i <= size(&una_lista) && i >= 0)
 		printf("buscar por indice: %d con---> %s", un_nodo->contenido->un_valor, un_nodo->contenido->un_string);
@@ -40,10 +40,20 @@ int main(void) {
 	printf("desencole el numero: %d\n", sacar(&una_lista)->contenido->un_valor);
 	printf("desencole el numero: %s\n", sacar(&una_lista)->contenido->un_string);
 
+
+	printf("\ninsertar por indice\n");
+	encolar(&uno, &una_lista);
+	encolar(&dos, &una_lista);
+	encolar(&tres, &una_lista);
+
 	mostrar(&una_lista);
+
+
+
 
 	return 0;
 }
+
 
 
 struct t_contenido * llenar(int valor, char * palabra) {

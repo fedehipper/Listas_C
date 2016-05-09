@@ -12,7 +12,7 @@ int eliminar(nodo ** lista, int indice);
 
 int size(nodo ** lista);
 
-nodo * busca_contenido_por_indice(nodo ** lista, int indice);
+nodo * busca_por_indice(nodo ** lista, int indice);
 
 nodo * sacar(nodo ** lista);
 
