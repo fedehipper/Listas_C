@@ -3,13 +3,14 @@
 #include "estructuras.h"
 
 
-/* crea el nodo de la estructura enlazada */
+
 nodo * crear_nodo(void * estructura) {
 	nodo * un_nodo = malloc(sizeof(nodo));
 	un_nodo->contenido = estructura;
 	un_nodo->sig = NULL;
 	return un_nodo;
 }
+
 
 /* mete un nodo o elemento al final de la lista como cola */
 void encolar(nodo ** un_nodo, nodo ** lista) {
@@ -25,6 +26,7 @@ void encolar(nodo ** un_nodo, nodo ** lista) {
 	}
 }
 
+
 /* mete un nodo o elemento al principio de la lista como pila */
 void apilar(nodo ** un_nodo, nodo ** lista) {
 	if(*lista != NULL) {
@@ -33,6 +35,7 @@ void apilar(nodo ** un_nodo, nodo ** lista) {
 	}
 	*lista = *un_nodo;
 }
+
 
 /* elimina el nodo de acuerdo al indice comenzando de 0 y si se paso de rango, no elimina */
 int eliminar(nodo ** lista, int indice) {
@@ -52,16 +55,17 @@ int eliminar(nodo ** lista, int indice) {
 		return 0;
 }
 
-/* retorna la cantidad de nodos o elementos de la lista */
+
 int size(nodo ** lista) {
 	nodo * aux = *lista;
-	int cont = 0;
+	int longitud = 0;
 	while(aux != NULL) {
 		aux = aux->sig;
-		cont++;
+		longitud++;
 	}
-	return cont;
+	return longitud;
 }
+
 
 /* retorna el nodo de acuerdo con un indice que recibe por parametro */
 nodo * busca_contenido_por_indice(nodo ** lista, int indice) {
@@ -71,11 +75,13 @@ nodo * busca_contenido_por_indice(nodo ** lista, int indice) {
 		if(i == indice) break;
 		aux = aux->sig;
 	}
-	return (indice >= 0 && indice <= size(lista)) ? aux : NULL;
+	return indice >= 0 && indice <= size(lista) ? aux : NULL;
 }
+
 
 /* elimina el primer elemento (des_encolar y des_apilar), y lo retorna */
 nodo * sacar(nodo ** lista) {
+
 	if(*lista != NULL) {
 		nodo * aux = *lista;
 		*lista = (*lista)->sig;
