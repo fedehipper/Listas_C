@@ -3,10 +3,10 @@
 
 
 /* t_contenido depende el programa */
-struct nodo {
+typedef struct estructura {
 	struct t_contenido * contenido;
-	struct nodo * sig;
-};
+	struct estructura * sig;
+} nodo;
 
 
 

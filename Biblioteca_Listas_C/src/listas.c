@@ -4,16 +4,16 @@
 
 
 /* crea el nodo de la estructura enlazada */
-struct nodo * crear_nodo(void * estructura) {
-	struct nodo * un_nodo = malloc(sizeof(struct nodo));
+nodo * crear_nodo(void * estructura) {
+	nodo * un_nodo = malloc(sizeof(nodo));
 	un_nodo->contenido = estructura;
 	un_nodo->sig = NULL;
 	return un_nodo;
 }
 
 /* mete un nodo o elemento al final de la lista como cola */
-void encolar(struct nodo ** un_nodo, struct nodo ** lista) {
-	struct nodo * aux = *lista;
+void encolar(nodo ** un_nodo, nodo ** lista) {
+	nodo * aux = *lista;
 	if(*lista == NULL) {
 		*lista = *un_nodo;
 		(*lista)->sig = NULL;
@@ -26,17 +26,17 @@ void encolar(struct nodo ** un_nodo, struct nodo ** lista) {
 }
 
 /* mete un nodo o elemento al principio de la lista como pila */
-void apilar(struct nodo ** un_nodo, struct nodo ** lista) {
+void apilar(nodo ** un_nodo, nodo ** lista) {
 	if(*lista != NULL) {
-		struct nodo * aux = *lista;
+		nodo * aux = *lista;
 		(*un_nodo)->sig = aux;
 	}
 	*lista = *un_nodo;
 }
 
 /* elimina el nodo de acuerdo al indice comenzando de 0 y si se paso de rango, no elimina */
-int eliminar(struct nodo ** lista, int indice) {
-	struct nodo * post = *lista, *ant = post;
+int eliminar(nodo ** lista, int indice) {
+	nodo * post = *lista, *ant = post;
 	int count = 0;
 	while(post != NULL && indice > count) {
 		ant = post;
@@ -53,8 +53,8 @@ int eliminar(struct nodo ** lista, int indice) {
 }
 
 /* retorna la cantidad de nodos o elementos de la lista */
-int size(struct nodo ** lista) {
-	struct nodo * aux = *lista;
+int size(nodo ** lista) {
+	nodo * aux = *lista;
 	int cont = 0;
 	while(aux != NULL) {
 		aux = aux->sig;
@@ -64,8 +64,8 @@ int size(struct nodo ** lista) {
 }
 
 /* retorna el nodo de acuerdo con un indice que recibe por parametro */
-struct nodo * busca_contenido_por_indice(struct nodo ** lista, int indice) {
-	struct nodo * aux = *lista;
+nodo * busca_contenido_por_indice(nodo ** lista, int indice) {
+	nodo * aux = *lista;
 	int i;
 	for(i = 0; i < size(lista) ; i++) {
 		if(i == indice) break;
@@ -75,9 +75,9 @@ struct nodo * busca_contenido_por_indice(struct nodo ** lista, int indice) {
 }
 
 /* elimina el primer elemento (des_encolar y des_apilar), y lo retorna */
-struct nodo * sacar(struct nodo ** lista) {
+nodo * sacar(nodo ** lista) {
 	if(*lista != NULL) {
-		struct nodo * aux = *lista;
+		nodo * aux = *lista;
 		*lista = (*lista)->sig;
 		aux->sig = NULL;
 		return aux;
