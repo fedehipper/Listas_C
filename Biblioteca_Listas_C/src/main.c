@@ -20,9 +20,14 @@ int main(void) {
     nodo * una_lista;
 	una_lista = NULL;
 
+	insertar_por_indice(&una_lista, &uno, 0);
+	insertar_por_indice(&una_lista, &dos, 1);
+	insertar_por_indice(&una_lista, &tres, 1);
+
+
 	mostrar(&una_lista);
 
-	return 0;
+	return EXIT_SUCCESS;
 }
 
 

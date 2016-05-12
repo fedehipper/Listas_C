@@ -95,12 +95,14 @@ nodo * sacar(nodo ** lista) {
 void insertar_por_indice(nodo ** lista, nodo ** elemento, int indice) {
 	if(indice == 0)
 		apilar(elemento, lista);
-	if(indice == size(lista) + 1)
+	else if(indice == size(lista))
 		encolar(elemento, lista);
-	nodo *anterior = malloc(sizeof(nodo));
-	nodo * siguiente = malloc(sizeof(nodo));
-	anterior = busca_por_indice(lista, indice - 1);
-	siguiente = anterior->sig;
-	anterior->sig = *elemento;
-	(*elemento)->sig = siguiente;
+	else {
+		nodo *anterior = malloc(sizeof(nodo));
+		nodo * siguiente = malloc(sizeof(nodo));
+		anterior = busca_por_indice(lista, indice - 1);
+		siguiente = anterior->sig;
+		anterior->sig = *elemento;
+		(*elemento)->sig = siguiente;
+	}
 }
