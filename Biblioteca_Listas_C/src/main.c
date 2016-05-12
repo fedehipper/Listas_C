@@ -8,20 +8,23 @@ struct t_contenido {
 	char * un_string;
 };
 
-struct t_contenido * llenar(int valor, char * palabra);
+struct t_contenido * llenar(int valor, char * cadena);
 void mostrar(nodo ** una_lista);
+nodo * new(int valor, char * cadena);
 
 
 int main(void) {
-	nodo * uno = crear_nodo(llenar(1, "hola"));
-	nodo * dos = crear_nodo(llenar(2, "como"));
-	nodo * tres = crear_nodo(llenar(3, "estas?"));
+	nodo * uno = new(1, "hola");
+	nodo * dos = new(2, "como");
+	nodo * tres = new(3, "estas?");
 
     nodo * una_lista;
 	una_lista = NULL;
 
 	insertar_por_indice(&una_lista, &uno, 0);
 	insertar_por_indice(&una_lista, &dos, 1);
+	nodo * otro = new(1, "chau");
+	insertar_por_indice(&una_lista, &otro , 0);
 	insertar_por_indice(&una_lista, &tres, 1);
 
 
@@ -31,13 +34,18 @@ int main(void) {
 }
 
 
-struct t_contenido * llenar(int valor, char * palabra) {
-	struct t_contenido * cont = malloc(sizeof(struct t_contenido));
-	cont->un_valor = valor;
-	cont->un_string = palabra;
-	return cont;
+/*-----------------------------------------------------------------*/
+
+nodo * new(int valor, char * cadena) {
+	return crear_nodo(llenar(valor, cadena));
 }
 
+struct t_contenido * llenar(int valor, char * cadena) {
+	struct t_contenido * cont = malloc(sizeof(struct t_contenido));
+	cont->un_valor = valor;
+	cont->un_string = cadena;
+	return cont;
+}
 
 void mostrar(nodo ** una_lista) {
 	nodo * aux;
