@@ -31,9 +31,19 @@ int main(void) {
 	insertar_por_indice(&una_lista, &dos, 1);
 	nodo * otro = new(1, "chau");
 	insertar_por_indice(&una_lista, &otro , 0);
+	sacar(&una_lista);
 	insertar_por_indice(&una_lista, &tres, 1);
-
+	nodo * foo = new(44, "zarlompa");
+	encolar(&foo, &una_lista);
+	eliminar(&una_lista, 2);
+	nodo * bar = new(33, "saraaaaaza");
+	apilar(&bar, &una_lista);
+	nodo * b = busca_por_indice(&una_lista, 3);
+	printf("%d %s\n", b->contenido->un_valor, b->contenido->un_string);
+	sacar(&una_lista);
 	mostrar(&una_lista);
+
+
 
 	return EXIT_SUCCESS;
 }
