@@ -70,7 +70,6 @@ nodo * sacar(nodo ** lista) {
 	nodo * aux = *lista;
 	if(*lista != NULL) {
 		*lista = aux->sig;
-
 		return aux;
 	}
 	else
