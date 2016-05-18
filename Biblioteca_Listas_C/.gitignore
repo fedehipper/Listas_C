@@ -1,1 +1,5 @@
 /Debug/
+
+.idea/
+
+CMakeLists.txt
