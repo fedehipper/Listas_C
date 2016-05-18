@@ -19,6 +19,8 @@ nodo * sacar(nodo ** lista);
 
 void insertar_por_indice(nodo ** lista, nodo ** elemento, int indice);
 
+void reverse(nodo ** lista);
+
 
 
 #endif /* LISTAS_H_ */

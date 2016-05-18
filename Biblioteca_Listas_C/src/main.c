@@ -42,8 +42,9 @@ int main(void) {
 	printf("%d %s\n", b->contenido->un_valor, b->contenido->un_string);
 	sacar(&una_lista);
 	mostrar(&una_lista);
-
-
+	reverse(&una_lista);
+	printf("\nreverso\n");
+	mostrar(&una_lista);
 
 	return EXIT_SUCCESS;
 }

@@ -70,6 +70,7 @@ nodo * sacar(nodo ** lista) {
 	nodo * aux = *lista;
 	if(*lista != NULL) {
 		*lista = aux->sig;
+
 		return aux;
 	}
 	else
@@ -87,4 +88,14 @@ void insertar_por_indice(nodo ** lista, nodo ** elemento, int indice) {
 		anterior->sig = *elemento;
 		(*elemento)->sig = siguiente;
 	}
+}
+
+void reverse(nodo ** lista) {
+	nodo * list_aux = NULL;
+	int length = size(lista), i;
+	for(i = 0 ; i < length ; i++) {
+		nodo * nodo_aux = crear_nodo(busca_por_indice(lista, i)->contenido);
+		apilar(&nodo_aux, &list_aux);
+	}
+	*lista = list_aux;
 }
