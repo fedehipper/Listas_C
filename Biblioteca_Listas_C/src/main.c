@@ -31,7 +31,9 @@ int main(void) {
 	insertar_por_indice(&una_lista, &dos, 1);
 	nodo * otro = new(1, "chau");
 	insertar_por_indice(&una_lista, &otro , 0);
-	sacar(&una_lista);
+
+	nodo * sacado = sacar(&una_lista);
+	encolar(&sacado, &una_lista);
 	insertar_por_indice(&una_lista, &tres, 1);
 	nodo * foo = new(44, "zarlompa");
 	encolar(&foo, &una_lista);
