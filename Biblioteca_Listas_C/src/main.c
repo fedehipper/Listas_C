@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include "estructuras.h"
 #include "listas.h"
+#include "cadenas.h"
 #include <stdarg.h>
 
 
@@ -47,6 +48,10 @@ int main(void) {
 	reverse(&una_lista);
 	printf("\nreverso\n");
 	mostrar(&una_lista);
+
+
+	printf("%s", s_reverse("Hola"));
+
 
 	return EXIT_SUCCESS;
 }
