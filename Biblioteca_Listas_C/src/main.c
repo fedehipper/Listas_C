@@ -4,6 +4,7 @@
 #include "listas.h"
 #include "cadenas.h"
 #include <stdarg.h>
+#include "string.h"
 
 
 #define contenido_length 2
@@ -49,8 +50,9 @@ int main(void) {
 	printf("\nreverso\n");
 	mostrar(&una_lista);
 
-
-	printf("%s", s_reverse("Hola"));
+	char * a = "Hola";
+	printf("%s\n", s_reverse(a));
+	printf("%ld\n", strlen("Hola"));
 
 
 	return EXIT_SUCCESS;

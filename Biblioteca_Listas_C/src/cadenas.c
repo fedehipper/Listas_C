@@ -1,24 +1,14 @@
 #include <stdio.h>
 #include <stdlib.h>
-
-
-int length(char * un_string) {
-	char * p = un_string;
-	int cant = 1;
-	while(p[cant] != '\0') {
-		p++;
-		cant++;
-	}
-	return cant;
-}
+#include <string.h>
 
 char * s_reverse(char * un_string) {
-	char * otra = malloc(sizeof(length(un_string) + 1));
-	int j, i = length(un_string) -1;
-	for(j = 0; j < length(un_string); j++) {
-		otra[i] = un_string[j];
+	char * str_aux = malloc(sizeof(strlen(un_string) + 1));
+	int j, i = strlen(un_string) -1;
+	for(j = 0 ; j < strlen(un_string) ; j++) {
+		str_aux[i] = un_string[j];
 		i--;
 	}
-	otra[length(un_string) + 1] = '\0';
-	return otra;
+	str_aux[j] = '\0';
+	return str_aux;
 }
