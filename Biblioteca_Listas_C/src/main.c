@@ -52,7 +52,7 @@ int main(void) {
 
 	char * a = "Hola";
 	printf("%s\n", s_reverse(a));
-	printf("%ld\n", strlen("Hola"));
+	printf("%d\n", strlen("Hola"));
 
 
 	return EXIT_SUCCESS;
